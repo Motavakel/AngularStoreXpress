@@ -1,0 +1,12 @@
+.search-container
+{
+  position: relative;
+}
+
+.search-btn{
+  position: absolute;
+  left: 2%;
+  top: 20%;
+  font-size: 19px;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+
+
+<div class="row my-5">
+  <h3>محصولات جدید</h3>
+  <swiper-container
+    [slides-per-view]="1"
+    [space-between]="10"
+    [navigation]="true"
+    [pagination]="false"
+    [scrollbar]="false"
+    [breakpoints]="breakpoints"
+    class="mySwiper"
+  >
+    <swiper-slide *ngFor="let item of data">
+      <app-shop-card [product]="item"></app-shop-card>
+    </swiper-slide>
+  </swiper-container>
+</div>
