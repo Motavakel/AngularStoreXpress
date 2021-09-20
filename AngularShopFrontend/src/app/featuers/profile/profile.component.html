@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 bg-light border-end">
+      <div class="list-group">
+        <ng-container *ngFor="let link of links; let i = index">
+          <a [routerLink]="['/profile', link.href]"
+            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+          >
+            <span>{{ link.name }}</span>
+            <i class="{{ link.icon }}"></i>
+          </a>
+        </ng-container>
+        <a (click)="logout()" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          <span>خروج</span>
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-9 col-lg-10">
+      <div class="alert alert-primary d-flex align-items-center justify-content-between">
+        <h4 class="mb-0">{{ title }}</h4>
+      </div>
+      <div class="profile-wrapper border mt-3 p-3 rounded" style="min-height: 380px">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.brand-list {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+swiper {
+  width: 100%;
+  padding: 10px;
+}
+
+.brand-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background: #28a745;
+  border-radius: 5px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.no-brands {
+  color: red;
+  font-weight: bold;
+}

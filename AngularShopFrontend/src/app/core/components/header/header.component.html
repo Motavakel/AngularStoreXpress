@@ -1,0 +1,76 @@
+<div class="container mt-2 mb-4">
+  <div class="header_bg" [ngClass]="{ header_section: currentRoute === '/' }">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a routerLink="/" class="logo"><img src="assets/images/logo.png" /></a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        (click)="toggleMobileNav()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
+        <ul class="navbar-nav mr-auto d-flex">
+          <li class="nav-item">
+            <a
+              [ngClass]="{ 'text-dark': currentRoute !== '/' }"
+              class="nav-link"
+              routerLink="/shop"
+              >فروشگاه</a
+            >
+          </li>
+        </ul>
+
+
+          <ul class="d-flex ml-auto align-items-center">
+            <li lass="ml-2">
+              <a
+                [routerLink]="
+                  (isAuthentication$ | async) ? '/profile' : '/login'
+                "
+              >
+                {{
+                  (isAuthentication$ | async) ? "حساب کاربری" : "ورود / ثبت نام"
+                }}
+              </a>
+            </li>
+            <li class="ms-2">
+              <a [routerLink]="['/basket']" class="basket-icon">
+                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                <span class="basket-count" *ngIf="(basket$ | async)?.items?.length as count">{{
+                  count
+                }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+</div>
+
+<!-- پس‌زمینه تاریک هنگام باز بودن منو -->
+<div
+  class="mobile-nav-overlay"
+  *ngIf="mobileNavOpen"
+  (click)="toggleMobileNav()"
+></div>
+
+<!-- منوی موبایل -->
+<div #mobileNav class="mobile-nav-panel">
+  <button class="close-btn" (click)="toggleMobileNav()">×</button>
+  <ul>
+    <li><a routerLink="/shop">فروشگاه</a></li>
+    <li>
+      <a [routerLink]="(isAuthentication$ | async) ? '/profile' : '/login'">
+        {{ (isAuthentication$ | async) ? "حساب کاربری" : "ورود / ثبت نام" }}
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/basket']">
+        <i class="fa fa-cart-plus"></i>
+        <span *ngIf="(basket$ | async)?.items?.length as count">{{ count }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

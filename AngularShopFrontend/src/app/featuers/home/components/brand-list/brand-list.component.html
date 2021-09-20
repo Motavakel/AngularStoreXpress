@@ -1,0 +1,24 @@
+<div class="brand-list">
+  <h2>بهترین برندهای ما</h2>
+
+  <ng-container *ngIf="data.length > 0; else noBrands">
+    <swiper-container
+    [slides-per-view]="1"
+    [space-between]="10"
+    [navigation]="true"
+    [pagination]="true"
+    [scrollbar]="false"
+    [breakpoints]="breakpoints"
+      class="mySwiper"
+    >
+      <swiper-slide *ngFor="let brand of data">
+        <a [routerLink]="['#', brand.id]" class="brand-item">{{ brand.title }}</a>
+      </swiper-slide>
+    </swiper-container>
+  </ng-container>
+
+  <ng-template #noBrands>
+    <p class="no-brands">برندی هنوز اضافه نکرده‌اید.</p>
+  </ng-template>
+</div>
+

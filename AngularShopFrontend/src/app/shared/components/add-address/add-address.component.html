@@ -1,0 +1,72 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ title }}</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="form">
+    <label for="number">شماره همراه</label>
+    <input id="number" type="text" class="form-control" formControlName="number" placeholder="شماره همراه" />
+    <div class="text-danger" *ngIf="form.get('number')?.touched && form.get('number')?.invalid">
+      <span *ngIf="form.get('number')?.errors?.['required']">شماره همراه الزامی است.</span>
+      <span *ngIf="form.get('number')?.errors?.['minlength']">شماره همراه باید ۱۱ رقم باشد.</span>
+      <span *ngIf="form.get('number')?.errors?.['maxlength']">شماره همراه نباید بیشتر از ۱۱ رقم باشد.</span>
+    </div>
+
+    <label for="firstName">نام</label>
+    <input id="firstName" type="text" class="form-control" formControlName="firstName" placeholder="نام" />
+    <div class="text-danger" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
+      <span *ngIf="form.get('firstName')?.errors?.['required']">نام الزامی است.</span>
+      <span *ngIf="form.get('firstName')?.errors?.['minlength']">نام باید حداقل ۳ کاراکتر باشد.</span>
+    </div>
+
+    <label for="lastName">نام خانوادگی</label>
+    <input id="lastName" type="text" class="form-control" formControlName="lastName" placeholder="نام خانوادگی" />
+    <div class="text-danger" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid">
+      <span *ngIf="form.get('lastName')?.errors?.['required']">نام خانوادگی الزامی است.</span>
+      <span *ngIf="form.get('lastName')?.errors?.['minlength']">نام خانوادگی باید حداقل ۳ کاراکتر باشد.</span>
+    </div>
+
+    <label for="state">استان</label>
+    <input id="state" type="text" class="form-control" formControlName="state" placeholder="استان" />
+    <div class="text-danger" *ngIf="form.get('state')?.touched && form.get('state')?.invalid">
+      <span *ngIf="form.get('state')?.errors?.['required']">استان الزامی است.</span>
+      <span *ngIf="form.get('state')?.errors?.['minlength']">استان باید حداقل 2 کاراکتر باشد.</span>
+    </div>
+
+    <label for="city">شهر</label>
+    <input id="city" type="text" class="form-control" formControlName="city" placeholder="شهر" />
+    <div class="text-danger" *ngIf="form.get('city')?.touched && form.get('city')?.invalid">
+      <span *ngIf="form.get('city')?.errors?.['required']">شهر الزامی است.</span>
+      <span *ngIf="form.get('city')?.errors?.['minlength']">شهر باید حداقل 2 کاراکتر باشد.</span>
+    </div>
+
+    <label for="postalCode">کد پستی</label>
+    <input id="postalCode" type="text" class="form-control" formControlName="postalCode" placeholder="کد پستی" />
+    <div class="text-danger" *ngIf="form.get('postalCode')?.touched && form.get('postalCode')?.invalid">
+      <span *ngIf="form.get('postalCode')?.errors?.['required']">کد پستی الزامی است.</span>
+      <span *ngIf="form.get('postalCode')?.errors?.['minlength']">کد پستی باید حداقل ۱۰ رقم باشد.</span>
+    </div>
+
+    <label for="fullAddress">آدرس کامل</label>
+    <input id="fullAddress" type="text" class="form-control" formControlName="fullAddress" placeholder="آدرس کامل" />
+    <div class="text-danger" *ngIf="form.get('fullAddress')?.touched && form.get('fullAddress')?.invalid">
+      <span *ngIf="form.get('fullAddress')?.errors?.['required']">آدرس کامل الزامی است.</span>
+      <span *ngIf="form.get('fullAddress')?.errors?.['minlength']">آدرس باید حداقل ۱۰ کاراکتر باشد.</span>
+    </div>
+
+    <div class="form-check form-switch mt-1 py-3 border rounded">
+      <input class="form-check-input" type="checkbox" role="switch" formControlName="isMain" id="flexSwitchCheckDefault" />
+      <label class="form-check-label" for="flexSwitchCheckDefault">انتخاب به عنوان آدرس پیش فرض</label>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmit()">ثبت</button>
+  <button type="button" class="btn btn-warning" (click)="bsModalRef.hide()">
+    {{ closeBtnName }}
+  </button>
+</div>

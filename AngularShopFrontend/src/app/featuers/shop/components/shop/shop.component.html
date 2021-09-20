@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-4 col-lg-3 mt-1">
+      <app-shop-filters></app-shop-filters>
+    </div>
+
+    <div class="col-12 col-md-8 col-lg-9">
+      <div class="row" *ngIf="data && data.result?.length">
+        <div class="d-flex align-items-baseline px-2 search-container">
+          <input
+            class="form-control"
+            #search
+            (keyup.enter)="onSearch()"
+            type="search"
+            placeholder="جستجو ..."
+          />
+          <span class="search-btn" (click)="onSearch()">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+        <div
+          class="col-6 col-md-4 col-lg-4 m-0 p-2"
+          *ngFor="let item of data?.result"
+        >
+          <app-shop-card [product]="item"></app-shop-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- بخش صفحه بندی -->
+  <div class="row">
+    <div
+      *ngIf="data && data.result?.length && data.count > shopParams.pageSize"
+      class="w-100"
+    >
+      <div class="d-flex justify-content-center mt-3">
+        <pagination
+          [totalItems]="data.count"
+          [itemsPerPage]="shopParams.pageSize"
+          [(ngModel)]="shopParams.pageIndex"
+          [directionLinks]="true"
+          (pageChanged)="onPageChange($event)"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+        >
+        </pagination>
+      </div>
+    </div>
+  </div>
+</div>
